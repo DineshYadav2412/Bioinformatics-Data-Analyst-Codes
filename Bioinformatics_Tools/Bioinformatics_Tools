@@ -1,0 +1,43 @@
+# Analysis Tools and Software
+
+## Overview
+
+This folder contains documentation and resources related to the tools, software, and utilities used in genetic data analysis and bioinformatics research.
+
+## Purpose
+
+The purpose of this folder is to maintain a record of the software and tools used throughout the analysis workflow, including their applications in data processing, genetic data quality control, GWAS, imputation, and statistical analysis.
+
+## Tools and Software Used
+
+| Tool / Software | Application                                                          |
+| --------------- | -------------------------------------------------------------------- |
+| PLINK           | Genetic data quality control, filtering, and dataset management      |
+| bcftools        | VCF processing, annotation, and manipulation                         |
+| Beagle          | Genotype phasing and imputation                                      |
+| R / RStudio     | Statistical analysis, MR, and data visualization                     |
+| Python          | Data processing, automation, and GWAS summary statistics preparation |
+| Ubuntu / WSL    | Linux-based bioinformatics workflows                                 |
+| Java            | Running Java-based bioinformatics tools                              |
+
+## Contents
+
+This folder may include:
+
+* Tool names and version information
+* Installation and setup instructions
+* Official documentation links
+* Commands and usage notes
+* Software-specific configuration details
+
+## Usage
+
+Refer to the relevant tool documentation for installation, configuration, and usage. Tool versions and parameters should be recorded where applicable to support reproducibility of the analysis.
+
+## Note
+
+This folder is intended for documenting the tools and software used in the research workflow. Large installers and executable files are not included unless specifically required. Please refer to the official websites for software downloads and licensing information.
+
+## Author
+
+Dinesh Yadav
