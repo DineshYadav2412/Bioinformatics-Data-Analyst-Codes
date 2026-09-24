@@ -1,0 +1,38 @@
+# Python Analysis Code
+
+## Overview
+
+This folder contains Python scripts developed and used for data processing, cleaning, and bioinformatics analysis. These scripts support various stages of genetic data analysis and GWAS summary statistics preparation.
+
+## Purpose
+
+The main purpose of these scripts is to simplify and automate data analysis tasks, reduce manual processing, and prepare datasets for downstream analysis.
+
+## Scripts Included
+
+* **GWAS Data Preparation:** Extracts required columns from large GWAS summary statistics files and generates simplified, standardized datasets for downstream analysis, including PICS2 fine-mapping.
+* **dbSNP rsID Extraction:** Maps genomic coordinates (GRCh37) to dbSNP rsIDs using the Ensembl REST API.
+* **Data Cleaning and Processing:** Performs data formatting, filtering, and preparation for further analysis.
+
+## Tools and Libraries
+
+* Python
+* pandas
+* requests
+* tqdm
+* openpyxl
+
+## Usage
+
+1. Download or clone this repository.
+2. Install the required Python libraries.
+3. Update the input and output file paths in the script.
+4. Run the required Python script.
+
+## Note
+
+Input file paths, output locations, and parameters may need to be modified according to your local environment and dataset.
+
+## Author
+
+Dinesh Yadav
