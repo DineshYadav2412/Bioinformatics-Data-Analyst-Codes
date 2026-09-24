@@ -1,0 +1,42 @@
+# R Analysis Code
+
+## Overview
+
+This folder contains R scripts developed and used for statistical analysis, genetic data analysis, and bioinformatics research. These scripts support data processing, Mendelian randomization (MR), GWAS-related analyses, and visualization of research findings.
+
+## Purpose
+
+The purpose of these scripts is to organize, simplify, and automate analytical workflows, perform statistical analyses, and generate outputs for research and interpretation.
+
+## Scripts Included
+
+* **Mendelian Randomization (MR):** Performs two-sample MR analysis, including data harmonization, causal effect estimation, heterogeneity testing, and pleiotropy assessment.
+* **GWAS Data Analysis:** Supports processing and analysis of genome-wide association study summary statistics.
+* **PheWAS Visualization:** Generates plots to visualize phenome-wide association study results.
+* **Data Processing:** Performs data cleaning, formatting, filtering, and preparation for downstream analysis.
+* **Data Visualization:** Creates figures and plots for research analysis and reporting.
+
+## Tools and Packages
+
+* R
+* TwoSampleMR
+* data.table
+* dplyr
+* ggplot2
+* readxl
+* writexl
+
+## Usage
+
+1. Clone or download this repository.
+2. Install the required R packages.
+3. Update input and output file paths according to your local environment.
+4. Run the required R script in RStudio or an R environment.
+
+## Note
+
+The scripts are intended for research and analytical purposes. Input datasets, package versions, and parameters may vary depending on the analysis. Review and modify the scripts according to your requirements before running them.
+
+## Author
+
+Dinesh Yadav
