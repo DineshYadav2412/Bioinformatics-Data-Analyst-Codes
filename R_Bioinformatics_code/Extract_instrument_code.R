@@ -1,0 +1,14 @@
+library(TwoSampleMR)
+library(data.table)
+library(ieugwasr)
+setwd("C:/Users/User/Downloads/Selected_Traits")
+
+Sys.setenv(OPENGWAS_JWT = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImFwaS1qd3QiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhcGkub3Blbmd3YXMuaW8iLCJhdWQiOiJhcGkub3Blbmd3YXMuaW8iLCJzdWIiOiJjb250YWN0ZGluZXNoeWFkYXYwQGdtYWlsLmNvbSIsImlhdCI6MTc5MDU5MTc0NSwiZXhwIjoxNzkxODAxMzQ1fQ.P5ZEMxSqJL2WvRyjKnhc9YMuqVIayGxEU9FB0k-8STxQ8aZYjkN1FDYJNXczB-QzJu9_hdzE4JBm8_I8kZW77qmp1YZFSkDCNgf8oYtwWJBi85-oYRShucjzLeUcAkSeSNHWxGUX4wy2GtZEsG6yznp7Xm1WcNYwza9HNFchdocAWMtQ33r0U0_fUQyxWmg09di7NMF8JQKUxqAdhNgH3VgJS7sgctMuTYRQ_47rdYUbp5BnU4iZmwuRbkVYkZHvMTzbCn81jfK-mXD8Hc1LfRvc54V_5X9hGwGuu6u0kQaXyJq-HDFRoynQ0ownBraCmiMpTskvoEMnvtCBDAZwtw")
+
+extract_instruments<- extract_instruments("ukb-d-30080_irnt", clump = FALSE)
+
+dim(extract_instruments)
+
+write.csv(extract_instruments, "ukb_d_30080_irnt_extract_instrument_data.csv")
+
+
