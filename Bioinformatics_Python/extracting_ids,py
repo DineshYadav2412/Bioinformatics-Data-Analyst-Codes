@@ -1,0 +1,149 @@
+import gzip
+import pandas as pd
+
+# ============================================================
+# INPUT VCF
+# ============================================================
+
+vcf_file = r"ukb-d-30100_irnt.vcf.gz"
+
+# ============================================================
+# RSIDs YOU WANT TO EXTRACT
+# ============================================================
+
+rsids = {
+    "rs67274221",
+    # "rs9271547",
+    # "rs9271340",
+    # "rs3135392",
+}
+
+# ============================================================
+# OUTPUT
+# ============================================================
+
+output_file = "selected_ukb-d-30100_irnt_rsids.csv"
+
+# ============================================================
+# STORE RESULTS
+# ============================================================
+
+results = []
+
+# ============================================================
+# READ VCF.GZ
+# ============================================================
+
+with gzip.open(vcf_file, "rt") as vcf:
+
+    for line in vcf:
+
+        # Skip VCF header
+        if line.startswith("#"):
+            continue
+
+        # Split VCF columns
+        fields = line.rstrip("\n").split("\t")
+
+        # Standard VCF columns
+        chrom = fields[0]
+        pos = fields[1]
+        variant_id = fields[2]
+        ref = fields[3]
+        alt = fields[4]
+        qual = fields[5]
+        filt = fields[6]
+        info = fields[7]
+
+        # ----------------------------------------------------
+        # Check whether requested rsID is present
+        # ----------------------------------------------------
+
+        if variant_id == ".":
+            continue
+
+        variant_ids = variant_id.split(";")
+
+        matched = set(variant_ids).intersection(rsids)
+
+        if not matched:
+            continue
+
+        # ----------------------------------------------------
+        # Extract INFO fields
+        # ----------------------------------------------------
+
+        info_dict = {}
+
+        for item in info.split(";"):
+
+            if "=" in item:
+                key, value = item.split("=", 1)
+                info_dict[key] = value
+
+        info_af = info_dict.get("AF", "")
+
+        # ----------------------------------------------------
+        # Extract FORMAT fields
+        # ----------------------------------------------------
+
+        format_fields = fields[8].split(":")
+
+        # Usually there is one sample in this VCF
+        sample = fields[9].split(":")
+
+        format_dict = dict(zip(format_fields, sample))
+
+        es = format_dict.get("ES", "")
+        se = format_dict.get("SE", "")
+        lp = format_dict.get("LP", "")
+        format_af = format_dict.get("AF", "")
+        format_id = format_dict.get("ID", "")
+
+        # ----------------------------------------------------
+        # Add each matched rsID
+        # ----------------------------------------------------
+
+        for rsid in matched:
+
+            results.append({
+                "CHROM": chrom,
+                "POS": pos,
+                "ID": rsid,
+                "REF": ref,
+                "ALT": alt,
+                "QUAL": qual,
+                "FILTER": filt,
+                "INFO_AF": info_af,
+                "ES": es,
+                "SE": se,
+                "LP": lp,
+                "FORMAT_AF": format_af,
+                "FORMAT_ID": format_id
+            })
+
+
+# ============================================================
+# CREATE DATAFRAME
+# ============================================================
+
+df = pd.DataFrame(results)
+
+# ============================================================
+# SAVE CSV
+# ============================================================
+
+df.to_csv(output_file, index=False)
+
+print()
+print("========================================")
+print("Extraction completed")
+print("========================================")
+print(f"Number of variants found: {len(df)}")
+print(f"Output file: {output_file}")
+print()
+
+if len(df) > 0:
+    print(df.to_string(index=False))
+else:
+    print("No requested rsIDs were found.")
